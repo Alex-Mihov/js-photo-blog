@@ -112,7 +112,7 @@ main {
 
 
 .overlay.show-overlay {
-    display: flex;
+    display: block;
 
 }
 

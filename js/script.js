@@ -43,22 +43,18 @@ axios.get(endpoint)
             `;
         }
 
-        // Seleziona tutte le immagini all'interno degli elementi con la classe .card e .image
-        const images = document.querySelectorAll('.card .image img');
-
-        for (let i = 0; i < images.length; i++) {
-
-            // Salviamo tuttle le immagine in una costante
-            const imagesIesima = images[i];
-
-            // Creiamo un event listener per il click
-            imagesIesima.addEventListener('click', () => {
-                // Quando si clicca sull'immagine, mostriamo l'overlay
-                overlay.classList.add('show-overlay');
-                // Settiamo l'immagine dell'overlay con quella cliccata utilizzando l'attributo src
-                overlayImage.src = imagesIesima.src;
+        // Seleziona tutte le card
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('.image img');
+                if (img) {
+                    overlay.classList.add('show-overlay');
+                    overlayImage.src = img.src;
+                }
             });
-        }
+        });
 
     })
     .catch(error => {
